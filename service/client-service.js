@@ -41,7 +41,7 @@ const table = document.querySelector("[data-table]");
 const listaClientes = () => {
   const promise = new Promise((resolve, reject) => {
     const http = new XMLHttpRequest();
-    http.open("GET", "http://localhost:3000/perfiles");
+    http.open("GET", "http://localhost:3000/perfil");
 
     http.send();
 
