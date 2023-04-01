@@ -27,7 +27,9 @@ const crearNuevaLinea = (nombre,email) => {
           linea.innerHTML = contenido 
           return linea
 };
-const http = new XMLHttpRequest();
+
+const table = document.querySelector("[data-table]");
+
 //abrir http (método, url)
 
 /*CRUD 
@@ -37,11 +39,23 @@ const http = new XMLHttpRequest();
     Delete) DELETE
 */
 //Métodos HTTP
+const http = new XMLHttpRequest();
 http.open("GET", "http://localhost:3000/perfil")
 http.send();
+
 http.onload = () => {
-    const data = http.response
+    const data = JSON.parse(http.response);
     console.log(data);
-}
-console.log(http);
-//console.log("CLIENTE-SERVICE");
+    data.forEach((perfil) => {
+        const nuevaLinea = crearNuevaLinea(perfil.nombre, perfil.email);
+    table.appendChild(nuevaLinea);   
+});
+/*const http2 = new XMLHttpRequest()
+http2.open("GET", "http://localhost:3000/perfil/hoy")
+http2.send();
+http2.onload = () => {
+const data2 = JSON.parse(http2.response)
+} */
+};
+//console.log(http);
+//console.log("CLIENTE-SERVICE"); 
