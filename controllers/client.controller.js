@@ -52,3 +52,7 @@ clientServices
     });
   })
   .catch((error) => alert("Ocurrió un error"));
+
+  const eliminarCliente = (id) => {
+   console.log("Elimina a: ", id ) 
+  }
